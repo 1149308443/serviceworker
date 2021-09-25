@@ -13,7 +13,7 @@ Service Worker 有以下特性：
 
 可以在浏览器的任务管理器中查看当前页面的servicework线程
 
-![avatar][base64_1]
+![avatar](source/base64_1.jpg)
 
 #### service work存在的意义
 
@@ -30,7 +30,7 @@ servicework在实际中的用处就是用来做离线访问，实现在断网的
 
 #### servicework 工作流程
 
-![avatar][base64_2]
+![avatar](source/base64_2.jpg)
 
 - Service Worker 文件只在首次注册的时候执行了一次。
 - 安装、激活流程也只是在首次执行 Service Worker 文件的时候进行了一次。
@@ -42,7 +42,7 @@ servicework在实际中的用处就是用来做离线访问，实现在断网的
 
 当一个servicework被注册成功后，它将开始它的生命周期，我们对servicework的操作一般都是在其生命周期里面进行的。下面是一个servicework初始化时候的生命周期
 
-![avatar][base64_3]
+![avatar](source/base64_3.jpg)
 
 可以看到servicework的生命周期分为这么几个状态 安装中, 安装后, 激活中, 激活后, 废弃
 
@@ -57,7 +57,7 @@ servicework在实际中的用处就是用来做离线访问，实现在断网的
 
 更新一个servicework，最直接的办法就是修改servicework.js这个文件，当刷新浏览器时，浏览器尝试重新下载servicework.js脚本文件，然后会与之前的版本比对，一旦发现文件内容不一致，就会进入更新流程，更新一个 service work 的流程大致如下：
 
-![avatar][base64_4]
+![avatar](source/base64_4.jpg)
 
 + 新的 servicework 被启动安装并触发 install事件。
 + 安装成功后，新版 servicework 进入等待状态，此时页面的控制权还在老版 servicework手中。
@@ -168,7 +168,7 @@ servicework在实际中的用处就是用来做离线访问，实现在断网的
 
 请求速度方面：（以下拿vue官网index.html做的数据）
 
-![avatar][base64_5]
+![avatar](source/base64_5.jpg)
 
 
 
