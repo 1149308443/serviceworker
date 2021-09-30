@@ -14,6 +14,8 @@ var urlsToCache = [
 //定义缓存名称
 var CACHE_NAME = 'counterxing-v4';
 
+
+// 安装
 self.addEventListener('install',(event) => {
   console.log('install事件')
   self.skipWaiting();
@@ -25,38 +27,7 @@ self.addEventListener('install',(event) => {
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  // console.log('fetch事件')
-
-  //有缓存则返回缓存，无缓存则去服务器
-  event.respondWith(
-    caches.open(CACHE_NAME).then(function(cache){
-      return cache.match(event.request).then((response) => {
-      
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
-    }
-    )
-  );
-
-  //缓存优先，同事更新缓存资源
-  event.responWith(
-    caches.open(CACHE_NAME).then(function(cache) {
-      return cache.match(event.request).then(function(response) {
-        var fetchPromise = fetch(event.request).then(function(networkResponse) {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        })
-        return response || fetchPromise;
-      })
-    })
-  )
-});
-
-
+// 激活
 self.addEventListener('activate', (event) => {
   console.log('activate事件');
   var cacheWhitelist = [CACHE_NAME];
@@ -73,3 +44,28 @@ self.addEventListener('activate', (event) => {
     })
   );
 });
+
+// 拦截网络请求
+self.addEventListener('fetch', (event) => {
+  console.log('fetch事件')
+  //有缓存则返回缓存，无缓存则去服务器
+  event.respondWith(
+    caches.open(CACHE_NAME).then(function(cache){
+      return cache.match(event.request).then((response) => {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
+    }
+    )
+  );
+});
+
+
+// service worker 和主进程通讯
+// self.addEventListener('message', (event)=>{
+//   console.log('页面传递过来的数据',event.data)  // 收到主线程传递的信息
+//   event.source.postMessage('this message is from sw.js to page');  // 向主线程传递信息
+// })
+

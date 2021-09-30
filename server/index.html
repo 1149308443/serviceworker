@@ -13,34 +13,24 @@
   <p class='test'>service work test ka</p>
   <button id='btn'>test</button>
   <img class='image' src="./1.png" alt="">
-  <!-- <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585665522641&di=3b7f3c76fc3586a7998f30f7348c3a06&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F21%2F09%2F01200000026352136359091694357.jpg" alt=""> -->
   <script src="./app.js"></script>
-  <!-- <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.js"></script> -->
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
   <script>
     btn.onclick = function () {
       console.log('btm');
-      // fetch("localhsot:8888/getdata").then(function(response) {
-      //       // 使用return 将数据返回对象。
-      //        return response.json();
-      //   }).then(function (data) {
-      //       console.log('返回json数据',data);
-      //   }).catch(function(ex) {
-      //       console.log('parsing failed', ex)
-      //     })
 
-      // $.ajax({
-      //   async: true,
-      //   type: "get",
-      //   url: "getdata",
-      //   dataType: "json",
-      //   success: function (data) {
-      //     console.log(data);
-      //   },
-      //   error: function (data) {
-      //     console.log(data.result);
-      //   }
-      // });
+      $.ajax({
+        async: true,
+        type: "get",
+        url: "getdata",
+        dataType: "json",
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (data) {
+          console.log(data.result);
+        }
+      });
     }
   </script>
 </body>
